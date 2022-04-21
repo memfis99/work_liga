@@ -1,0 +1,6 @@
+---
+
+- name: deploy sources.list template
+  template:
+    src: sources.list.j2
+    dest: /etc/apt/sources.list

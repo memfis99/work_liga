@@ -1,0 +1,17 @@
+---
+
+- name: 'set-dns'
+  import_tasks: 'set-dns.yml'
+  tags: ['set-dns']
+
+- name: 'set-repo'
+  import_tasks: 'set-repo.yml'
+  tags: ['set-repo']
+
+- name: 'files-copy'
+  import_tasks: 'files-copy.yml'
+  tags: ['files-copy']
+
+- name: 'install-deb'
+  import_tasks: 'install-deb.yml'
+  tags: ['install-deb']
