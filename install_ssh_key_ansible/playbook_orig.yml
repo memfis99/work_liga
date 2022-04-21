@@ -1,0 +1,9 @@
+---
+
+- hosts: servers
+  tasks:
+    - name: install key
+      authorized_key:
+        user: cloud
+        state: present
+        key: "{{lookup('file', '/home/memfis/.ssh/id_rsa.pub') }}"
