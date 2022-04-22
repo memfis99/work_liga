@@ -3,7 +3,7 @@
 - name: copy files 
   copy:
     src: copy_file/
-    dest: /home/cloud/deb_package/
+    dest: "{{package_dir}}"
     owner: cloud
     group: root
     mode: 0644

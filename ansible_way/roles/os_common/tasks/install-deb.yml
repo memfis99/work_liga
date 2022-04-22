@@ -1,4 +1,4 @@
 ---
 
 - name: Install package
-  shell: dpkg -i /home/cloud/deb_package/*.deb
+  shell: dpkg -i "{{package_dir}}"*.deb
