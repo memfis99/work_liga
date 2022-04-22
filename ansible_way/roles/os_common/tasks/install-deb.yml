@@ -1,8 +1,4 @@
 ---
 
-- name: Install package1
-  shell: dpkg -i /home/cloud/deb_package/apt-transport-https_1.8.2.3+ci202111232239+astra20_all.deb
-
-
-- name: Install package2
-  shell: dpkg -i /home/cloud/deb_package/ca-certificates_20200601~deb10u2_all.deb
+- name: Install package
+  shell: dpkg -i /home/cloud/deb_package/*.deb

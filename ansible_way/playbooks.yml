@@ -4,3 +4,4 @@
   become: true
   roles:
     - os_common
+    - install_key

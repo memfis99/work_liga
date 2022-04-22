@@ -1,0 +1,7 @@
+---
+
+- name: install key
+  authorized_key:
+    user: cloud
+    state: present
+    key: "{{lookup('file', '/$HOME/.ssh/id_rsa.pub') }}"

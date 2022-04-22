@@ -1,0 +1,5 @@
+---
+
+- name: 'install-key'
+  import_tasks: 'install-key.yml'
+  tags: ['install-key']
