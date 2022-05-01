@@ -1,0 +1,15 @@
+----zabbix-----
+login Admin
+pass zabbix
+http://10.125.4.207/zabbix.php?action=dashboard.view
+
+
+----gitlab----
+login kzuykov
+pass 131384qq
+https://10.125.4.206/
+
+----graylog----
+login admin
+pass 131384s110
+http://10.125.4.205/

@@ -6,5 +6,5 @@
     dest: "{{package_dir}}"
     owner: cloud
     group: root
-    mode: 0644
+    mode: 0775
     backup: yes

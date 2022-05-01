@@ -1,2 +1,4 @@
 user_dir: "/home/cloud"
 package_dir: "/home/cloud/deb_package/"
+graylog_dir: "/home/cloud/opt_graylog/"
+home_user: cloud

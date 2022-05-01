@@ -1,7 +1,18 @@
 ---
 
+#- hosts: all
+#  become: true
+#  roles:
+#    - os_common
+#    - install_key
+
 - hosts: all
   become: true
   roles:
     - os_common
     - install_key
+
+- hosts: ITI_GRAYLOG
+  become: true
+  roles:
+    - install_graylog

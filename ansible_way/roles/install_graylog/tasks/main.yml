@@ -1,0 +1,5 @@
+---
+
+- name: 'install-graylog'
+  import_tasks: 'install-graylog.yml'
+  tags: ['install-graylog']

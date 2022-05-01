@@ -4,4 +4,9 @@
   authorized_key:
     user: cloud
     state: present
-    key: "{{lookup('file', '/$HOME/.ssh/id_rsa.pub') }}"
+    key: "{{item}}"
+  with_file:
+    - /$HOME/ansible_way/keys_s/id_rsa.pub
+    - /$HOME/ansible_way/keys_s/id_rsa_anisimov.pub
+    - /$HOME/ansible_way/keys_s/id_rsa_ilya.pub
+    - /$HOME/ansible_way/keys_s/id_rsa_pavel.pub  
