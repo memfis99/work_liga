@@ -1,0 +1,5 @@
+---
+
+- name: 'install-gitlab'
+  import_tasks: 'install-gitlab.yml'
+  tags: ['install-gitlab']

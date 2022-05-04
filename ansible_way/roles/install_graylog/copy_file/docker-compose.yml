@@ -4,10 +4,11 @@ services:
     mongo:
       image: mongo:4.2
       volumes:
-        - /home/cloud/opt_graylog/mongo-volume:/data/db
-        - /home/cloud/opt_graylog/init-mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+        - volume_mongo:/data/db
+        #- /home/kzuykov/graylog-build/init-mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
       networks:
         - greylog_net
+      restart: always    
     # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
     elasticsearch:
       image: elasticsearch:7.17.0
@@ -21,13 +22,14 @@ services:
           soft: -1
           hard: -1
       volumes:
-        - /home/cloud/opt_graylog/elastic:/usr/share/elasticsearch/data
+        - volume_elastic:/usr/share/elasticsearch/data
 #      deploy:
 #        resources:
 #          limits:
 #            memory: 1g
       networks:
         - greylog_net
+      restart: always    
     # Graylog: https://hub.docker.com/r/graylog/graylog/
     graylog:
       image: graylog/graylog:4.2
@@ -35,9 +37,9 @@ services:
       container_name: graylog_node1
       volumes:
       #  - /home/kzuykov/graylog-build/journal:/usr/share/graylog/data/journal
-        - graylog_data:/usr/share/graylog/data
+        - volume_graylog:/usr/share/graylog/data
       #  - '/home/kzuykov/graylog-build/_data:/usr/share/graylog/data'
-        - /home/cloud/opt_graylog/node-id:/usr/share/graylog/data/config/node-id
+      #  - /home/kzuykov/graylog-build/node-id:/usr/share/graylog/data/config/node-id
       #  - /home/kzuykov/graylog-build/data3/journal:/usr/share/graylog/data/journal
       environment:
         # CHANGE ME (must be at least 16 characters)!
@@ -51,10 +53,10 @@ services:
       restart: always
       depends_on:
         - mongo
-        - elasticsearch
+      #  - elasticsearch
       ports:
         # Graylog web interface and REST API
-        - 9000:9000
+        - 80:9000
         # Syslog TCP
         - 1514:1514
         # Syslog UDP
@@ -69,13 +71,32 @@ networks:
 #Internal-only network for proper nginx proxying and ssh
   greylog_net:
     driver: bridge
-#    enable_ipv6: true
-#    internal: false
     ipam:
       driver: default
       config:
         - subnet: 172.16.237.0/24
-#       - subnet: 2001:3984:3989::/64
+#volumes:
+#  graylog_data:
+#    driver: local
+
 volumes:
-  graylog_data:
+  volume_graylog:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_graylog/vol_graylog/'
+
+  volume_elastic:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_graylog/vol_elastic/'
+
+  volume_mongo:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_graylog/vol_mongo/'

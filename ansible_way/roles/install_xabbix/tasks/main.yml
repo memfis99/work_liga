@@ -1,0 +1,5 @@
+---
+
+- name: 'install-zabbix'
+  import_tasks: 'install-zabbix.yml'
+  tags: ['install-zabbix']

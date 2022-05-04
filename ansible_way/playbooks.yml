@@ -16,3 +16,13 @@
   become: true
   roles:
     - install_graylog
+
+- hosts: ITI_ZABBIX
+  become: true
+  roles:
+    - install_zabbix
+
+- hosts: ITI_GITLAB
+  become: true
+  roles:
+    - install_gitlab    
