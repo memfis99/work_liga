@@ -1,0 +1,5 @@
+---
+
+- name: 'install-ntp-client'
+  import_tasks: 'install-ntp-client.yml'
+  tags: ['install-ntp-client']

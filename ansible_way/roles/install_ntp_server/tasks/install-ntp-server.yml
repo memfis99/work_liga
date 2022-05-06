@@ -1,0 +1,33 @@
+---
+---
+- name: install ntp
+  apt:
+    pkg:
+      - ntp
+    update_cache: yes
+
+
+- name: deploy ntp.conf template
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: enabled start ntp client
+  systemd:
+    name: ntp
+    state: started
+    enabled: yes
+  become: yes
+  become_user: root
+
+
+- name: restart ntp
+  systemd:
+    name: ntp
+    state: restarted
+  become: yes
+  become_user: root

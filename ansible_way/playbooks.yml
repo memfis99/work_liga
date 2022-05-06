@@ -1,16 +1,12 @@
 ---
 
-#- hosts: all
-#  become: true
-#  roles:
-#    - os_common
-#    - install_key
-
 - hosts: all
   become: true
   roles:
     - os_common
     - install_key
+    - install_ntp_client
+
 
 - hosts: ITI_GRAYLOG
   become: true
@@ -25,4 +21,10 @@
 - hosts: ITI_GITLAB
   become: true
   roles:
-    - install_gitlab    
+    - install_gitlab
+
+- hosts: ITI_NTP_DNS
+  become: true
+  roles:
+    - install_ntp_server
+    - install_dns_server

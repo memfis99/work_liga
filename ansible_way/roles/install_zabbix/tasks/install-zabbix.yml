@@ -1,0 +1,50 @@
+---
+
+#- name: сreate directory
+#  file:
+#    path: "{{zabbix_dir}}"
+#    mode: 0755
+#    owner: cloud
+#    group: root
+#    state: directory
+
+- name: сreate directory
+  file:
+    path: "{{zabbix_dir}}/vol_postgres/"
+    mode: 0755
+    owner: cloud
+    group: root
+    state: directory
+
+- name: сreate directory
+  file:
+    path: "{{zabbix_dir}}/vol_ssl/"
+    mode: 0755
+    owner: cloud
+    group: root
+    state: directory
+
+- name: copy files
+  copy:
+    src: copy_file/
+    dest: "{{zabbix_dir}}"
+    owner: cloud
+    group: root
+    mode: 0775
+    backup: yes
+
+- name: install docker and docker-compose
+  apt:
+    pkg:
+      - docker.io
+      - docker-compose
+    update_cache: yes
+
+- name: add user docker
+  shell: usermod -aG docker {{home_user}}
+
+- name: deploy Docker Compose
+  docker_compose:
+    project_src: "{{zabbix_dir}}"
+    files:
+      - docker-compose.yml

@@ -3,7 +3,6 @@ login Admin
 pass zabbix
 http://10.125.4.207/zabbix.php?action=dashboard.view
 
-
 ----gitlab----
 login kzuykov
 pass 131384qq
@@ -13,3 +12,12 @@ https://10.125.4.206/
 login admin
 pass 131384s110
 http://10.125.4.205/
+
++++++++zabbix+++++++++
+-----от os на машине---
+pass от root
+2Tdhj>70
+---от web zabbix--
+login: Admin 
+pass: zabbix
++++++++++++++++++++++++

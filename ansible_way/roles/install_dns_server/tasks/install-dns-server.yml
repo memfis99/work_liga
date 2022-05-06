@@ -1,0 +1,68 @@
+---
+
+- name: install dns server
+  apt:
+    pkg:
+      - bind9
+    update_cache: yes
+
+- name: deploy named.conf.j2 template
+  template:
+    src: named.conf.j2
+    dest: /etc/bind/named.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: deploy named.conf.local.j2 template
+  template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: deploy named.conf.options.j2 template
+  template:
+    src: named.conf.options.j2
+    dest: /etc/bind/named.conf.options
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: сreate directory
+  file:
+    path: /etc/bind/zones/"
+    mode: 0755
+    owner: root
+    group: bind
+    state: directory
+
+- name: copy files congig zones
+  copy:
+    src: copy_file/
+    dest: "/etc/bind/zones/"
+    owner: root
+    group: bind
+    mode: 0775
+    backup: yes
+
+
+- name: enabled start dns server
+  systemd:
+    name: bind9
+    state: started
+    enabled: yes
+  become: yes
+  become_user: root
+
+
+- name: restart dns server
+  systemd:
+    name: bind9
+    state: restarted
+  become: yes
+  become_user: root

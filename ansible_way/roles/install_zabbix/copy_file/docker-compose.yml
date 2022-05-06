@@ -1,0 +1,133 @@
+
+# Deploy Zabbix server with a Docker Compose using the command:
+# docker-compose -f zabbix-docker-compose.yml -p zabbix up -d
+
+version: "3"
+services:
+  postgres:
+    image: 'postgres:14.2'
+    volumes:
+      - volume_postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: zabbixdb
+      POSTGRES_USER: zabbixdbuser
+      POSTGRES_PASSWORD: 131384s110
+    networks:
+      zabbix_net:
+#        ipv4_address: 172.16.238.9
+    #healthcheck:
+    #  test: ["CMD-SHELL", "pg_isready -U postgres -h 127.0.0.1"]
+    #  interval: 10s
+    #  timeout: 5s
+    #  retries: 3
+    #  start_period: 60s
+    restart: always
+
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:6.0.3-ubuntu
+    hostname: 'zabbix-server'
+    container_name: zabbix-server
+    environment:
+      DB_SERVER_HOST: postgres
+      DB_SERVER_PORT: 5432
+      POSTGRES_DB: zabbixdb
+      POSTGRES_USER: zabbixdbuser
+      POSTGRES_PASSWORD: 131384s110
+      ZBX_VALUECACHESIZE: 64M
+      ZBX_CACHESIZE: 128M
+      ZBX_TRENDCACHESIZE: 128M
+    ports:
+      - "10051:10051"
+    networks:
+      zabbix_net:
+#        ipv4_address: 172.16.238.8
+    restart: always
+    depends_on:
+      - postgres
+
+
+  web:
+    image: zabbix/zabbix-web-nginx-pgsql:6.0.3-ubuntu
+    environment:
+      DB_SERVER_HOST: postgres
+      DB_SERVER_PORT: 5432
+      POSTGRES_DB: zabbixdb
+      POSTGRES_USER: zabbixdbuser
+      POSTGRES_PASSWORD: 131384s110
+      ZBX_SERVER_HOST: zabbix-server
+      ZBX_SERVER_PORT: 10051
+      PHP_TZ: Europe/Moscow
+    volumes:
+      - volume_ssl:/etc/ssl/nginx
+    ports:
+      - "80:8080"
+    networks:
+      zabbix_net:
+    #healthcheck:
+    #  test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+    #  interval: 10s
+    #  timeout: 5s
+    #  retries: 3
+    #  start_period: 90s
+    restart: always
+    depends_on:
+      - postgres
+
+
+  agent:
+    image: zabbix/zabbix-agent:6.0.3-ubuntu
+    container_name: zabbix-agent
+    hostname: zabbix-agent
+    links:
+      - zabbix-server:zabbix-server
+    environment:
+      # Zabbix Hostname (replace with yours)
+      # Set as DNS name on Zabbix server host configuration screen to make checks of Zabbix server itself
+      ZBX_HOSTNAME: zabbix-server
+      ZBX_SERVER_HOST: zabbix-server
+    ports:
+      - "10050:10050"
+    networks:
+     zabbix_net:
+       ipv4_address: 172.20.0.6
+    restart: always
+    depends_on:
+      - postgres
+      - zabbix-server
+
+  zabbix-java-gateway:
+   image: zabbix/zabbix-java-gateway:6.0.3-ubuntu
+   container_name: zabbix-java-gateway
+   hostname: zabbix-java-gateway
+   ports:
+    - "10052:10052"
+   networks:
+     zabbix_net:
+#      ipv6_address: 2001:3984:3989::3
+   restart: always
+#
+networks:
+#Internal-only network for proper nginx proxying and ssh
+  zabbix_net:
+    driver: bridge
+#    enable_ipv6: true
+#    internal: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+#       - subnet: 2001:3984:3989::/64
+volumes:
+  volume_postgres:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_zabbix/vol_postgres/'
+
+  volume_ssl:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_zabbix/vol_ssl/'
