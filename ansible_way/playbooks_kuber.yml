@@ -1,0 +1,6 @@
+---
+
+- hosts: KUBERNETES
+  become: true
+  roles:
+    - install_key_kuber

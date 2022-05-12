@@ -1,0 +1,9 @@
+---
+
+- name: install key kuber
+  authorized_key:
+    user: cloud
+    state: present
+    key: "{{item}}"
+  with_file:
+    - /$HOME/ansible_way/keys_s/id_rsa_kuber.pub

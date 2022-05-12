@@ -2,14 +2,14 @@
 ; BIND data file for local loopback interface
 ;
 $TTL	604800
-@	IN	SOA	les-iti-ntp-1.les.at-consulting.ru. root.les-iti-ntp-1.les.at-consulting.ru. (
+@	IN	SOA	les-iti-ntp-1. root.les-iti-ntp-1. (
 			      2		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ;
-	IN	NS	les-iti-ntp-1.les.at-consulting.ru.
+@	IN	NS	les-iti-ntp-1.
 @	IN	A	127.0.0.1
 @	IN	AAAA	::1
 
@@ -124,5 +124,4 @@ les-iti-zbx-1	IN A	10.125.4.207
 les-iti-ntp-1	IN A	10.125.4.208
 les-iti-bareos-1	IN A	10.125.4.209
 les-iti-bareos-2	IN A	10.125.4.210
-dev                     IN A    10.125.4.99
-*.dev                   IN A    10.125.4.99     
+

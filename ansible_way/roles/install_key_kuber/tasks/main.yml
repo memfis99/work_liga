@@ -1,0 +1,5 @@
+---
+
+- name: 'install-key-kuder'
+  import_tasks: 'install-key-kuber.yml'
+  tags: ['install-key-kuber']
