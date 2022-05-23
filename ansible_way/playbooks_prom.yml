@@ -1,0 +1,6 @@
+---
+
+- hosts: ITI_ZABBIX
+  become: true
+  roles:
+    - install_prometheus

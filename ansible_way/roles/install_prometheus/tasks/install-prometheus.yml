@@ -1,0 +1,67 @@
+---
+
+- name: сreate directory
+  file:
+    path: "{{prometheus_dir}}/prometheus/"
+    mode: 0777
+    owner: cloud
+    group: root
+    state: directory
+
+- name: сreate directory
+  file:
+    path: "{{prometheus_dir}}/prometheus_data/"
+    mode: 0777
+    owner: cloud
+    group: root
+    state: directory
+
+- name: сreate directory
+  file:
+    path: "{{prometheus_dir}}/grafana_data/"
+    mode: 0777
+    owner: cloud
+    group: root
+    state: directory
+
+- name: сreate directory
+  file:
+    path: "{{prometheus_dir}}/grafana_provisioning/"
+    mode: 0777
+    owner: cloud
+    group: root
+    state: directory
+
+- name: copy files docker
+  copy:
+    src: copy_file_docker/
+    dest: "{{prometheus_dir}}"
+    owner: cloud
+    group: root
+    mode: 0775
+    backup: yes
+
+- name: copy files prometheus
+  copy:
+    src: copy_file_prometheus/
+    dest: "{{prometheus_dir}}/prometheus/"
+    owner: cloud
+    group: root
+    mode: 0775
+    backup: yes
+
+- name: install docker and docker-compose
+  apt:
+    pkg:
+      - docker.io
+      - docker-compose
+    update_cache: yes
+
+- name: add user docker
+  shell: usermod -aG docker {{home_user}}
+
+- name: deploy Docker Compose
+  docker_compose:
+    project_src: "{{prometheus_dir}}"
+    files:
+      - docker-compose.yml

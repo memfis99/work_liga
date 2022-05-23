@@ -1,0 +1,5 @@
+---
+
+- name: 'install-prometheus'
+  import_tasks: 'install-prometheus.yml'
+  tags: ['install-prometheus']
