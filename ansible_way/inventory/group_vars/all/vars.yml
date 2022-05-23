@@ -4,3 +4,5 @@ graylog_dir: "/home/cloud/opt_graylog/"
 home_user: cloud
 zabbix_dir: "/home/cloud/opt_zabbix/"
 gitlab_dir: "/home/cloud/opt_gitlab/"
+exporter_dir: "/usr/local/bin/"
+exporter_service_dir: "/etc/systemd/system/"

@@ -1,0 +1,5 @@
+---
+
+- name: 'install-node-exporter'
+  import_tasks: 'install-node-exporter.yml'
+  tags: ['install-node-exporter']
