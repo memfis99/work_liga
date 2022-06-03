@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:14.10.0-ce.0'
+    restart: always
+    hostname: 'gitlab.les.at-consulting.ru'
+    container_name: gitlab.les.at-consulting.ru
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.les.at-consulting.ru'
+        letsencrypt['enable'] = true
+        registry_external_url 'https://gitlab.les.at-consulting.ru'    # container registry, must use https protocol   
+        mattermost_external_url 'https://mattermost.les.at-consulting.ru' # mattermost, must use https protocol
+        letsencrypt['auto_renew_hour'] = "12"
+        letsencrypt['auto_renew_minute'] = "30"
+        letsencrypt['auto_renew_day_of_month'] = "*/7"
+        nginx['listen_port'] = 443
+        nginx['redirect_http_to_https'] = true
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - '/home/cloud/opt_gitlab/config:/etc/gitlab'
+      - '/home/cloud/opt_gitlab/logs:/var/log/gitlab'
+      - '/home/cloud/opt_gitlab/data:/var/opt/gitlab'
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine
+    container_name: gitlab-runner    
+    restart: always
+    depends_on:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - '/home/cloud/opt_gitlab/gitlab-runner:/etc/gitlab-runner'
+
+networks:
+#Internal-only network for proper nginx proxying and ssh
+  gitlab_net:
+    driver: bridge
+#    enable_ipv6: true
+#    internal: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16

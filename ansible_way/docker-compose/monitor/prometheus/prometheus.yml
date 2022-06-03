@@ -1,0 +1,86 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'docker-host-alpha'
+
+# Load and evaluate rules in this file every 'evaluation_interval' seconds.
+rule_files:
+  - "alert.rules"
+
+# A scrape configuration containing exactly one endpoint to scrape.
+scrape_configs:
+#  - job_name: 'nodeexporter'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['10.125.4.99:9100']
+
+        #  - job_name: 'cadvisor'
+        #    scrape_interval: 5s
+        #    static_configs:
+        #      - targets: ['cadvisor:8080']
+
+  - job_name: 'metrics/cadvisor'
+    metrics_path: "metrics/cadvisor"
+    bearer_token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IkxFaEFXRUtOSjVIRW9jOTdWbVNQd0NuUkhyYWVBMmF3eEhRa2lUWUlrdmcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtb25pdG9yaW5nIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InphYmJpeC1zZXJ2aWNlLWFjY291bnQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiemFiYml4LXNlcnZpY2UtYWNjb3VudCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjVkYzAzNDgxLTA5Y2EtNGVlMi04NjU4LTJkNjQ5NjE4NzFlZiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptb25pdG9yaW5nOnphYmJpeC1zZXJ2aWNlLWFjY291bnQifQ.nTyxxmdl0WC1HfnDz9JZMkxwU1qu4fd6PYP9DlA81ICOIANe76LW2bYz8OasS8Xju6hh1zoKP52dQ8QNHgFCmmOpdBmjFX_eOdnzSJQLGHE0mYeZPaK-BeXvx3ogioAJ98qPqtZpFCsjvic1n3bPl6lCmcWjXcAotlqLrmhz60P4Xezwz9s9zMQBigMZoPY263pjOkU_Vc06Reu1q_KSmY9gwXCRJkQna0_mZE6C8LFacLL3h6R7mMYg_B6CvRpBetXmVE6Hnn_3cLr4E958zCCm-zO8A2C8lnKkpWPjRej8SvgHspI4BUPQUaEjB-faohW3TaXpIHePmx9ufDdPWw'
+    scheme: "https"   
+    tls_config:
+      insecure_skip_verify: true        
+    scrape_interval: 5s
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/k8s_worker.yml
+
+  - job_name: 'prometheus'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['localhost:9090']
+
+
+  - job_name: 'metrics'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['10.125.4.96:8080']
+
+  - job_name: 'pushgateway'
+    scrape_interval: 10s
+    honor_labels: true
+    static_configs:
+      - targets: ['pushgateway:9091']
+
+  - job_name: 'k8s_node'
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/k8s_node.yml
+
+  - job_name: 'VMs'
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/vm.yml
+
+  - job_name: 'pnsi'
+    metrics_path: "/core/actuator/prometheus"
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['pnsi.dev.fgislk.at-consulting.ru:80']
+
+
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets: 
+      - 'alertmanager:9093'
+
+#  - job_name: 'nginx'
+#    scrape_interval: 10s
+#    static_configs:
+#      - targets: ['nginxexporter:9113']
+
+#  - job_name: 'aspnetcore'
+#    scrape_interval: 10s
+#    static_configs:
+#      - targets: ['eventlog-proxy:5000', 'eventlog:5000']

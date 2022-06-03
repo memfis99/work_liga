@@ -1,0 +1,21 @@
+2022-05-05_11:27:00.72298 {"timestamp":"2022-05-05 11:27:00.722 Z","level":"info","msg":"Server is initializing...","caller":"app/server.go:255","go_version":"go1.16.7"}
+2022-05-05_11:27:00.72317 {"timestamp":"2022-05-05 11:27:00.722 Z","level":"info","msg":"Starting websocket hubs","caller":"app/web_hub.go:93","number_of_hubs":8}
+2022-05-05_11:27:00.72807 {"timestamp":"2022-05-05 11:27:00.727 Z","level":"info","msg":"Pinging SQL","caller":"sqlstore/store.go:215","database":"master"}
+2022-05-05_11:27:00.81519 {"timestamp":"2022-05-05 11:27:00.807 Z","level":"info","msg":"Loaded system translations","caller":"i18n/i18n.go:93","for locale":"en","from locale":"/opt/gitlab/embedded/service/mattermost/i18n/en.json"}
+2022-05-05_11:27:00.83085 {"timestamp":"2022-05-05 11:27:00.830 Z","level":"info","msg":"Current version is 6.5.0 (6.5.0/Tue Mar 15 15:35:40 UTC 2022/7fff157bcf85b54d595e22262a66d7f28d4b5a68/none)","caller":"app/server.go:538","current_version":"6.5.0","build_number":"6.5.0","build_date":"Tue Mar 15 15:35:40 UTC 2022","build_hash":"7fff157bcf85b54d595e22262a66d7f28d4b5a68","build_hash_enterprise":"none"}
+2022-05-05_11:27:00.83086 {"timestamp":"2022-05-05 11:27:00.830 Z","level":"info","msg":"Team Edition Build","caller":"app/server.go:549","enterprise_build":false}
+2022-05-05_11:27:00.83087 {"timestamp":"2022-05-05 11:27:00.830 Z","level":"info","msg":"Printing current working","caller":"app/server.go:553","directory":"/opt/gitlab/embedded/service/mattermost"}
+2022-05-05_11:27:00.83087 {"timestamp":"2022-05-05 11:27:00.830 Z","level":"info","msg":"Loaded config","caller":"app/server.go:554","source":"file:///var/opt/gitlab/mattermost/config.json"}
+2022-05-05_11:27:00.84629 {"timestamp":"2022-05-05 11:27:00.837 Z","level":"info","msg":"Starting workers","caller":"jobs/workers.go:48"}
+2022-05-05_11:27:00.84631 {"timestamp":"2022-05-05 11:27:00.842 Z","level":"error","msg":"License key from https://mattermost.com required to unlock enterprise features.","caller":"app/license.go:90","error":"resource: License id: "}
+2022-05-05_11:27:00.84631 {"timestamp":"2022-05-05 11:27:00.845 Z","level":"info","msg":"Starting schedulers.","caller":"jobs/schedulers.go:47"}
+2022-05-05_11:27:00.87768 {"timestamp":"2022-05-05 11:27:00.877 Z","level":"error","msg":"Failed to update assets subpath from config","caller":"web/static.go:26","error":"failed to update root.html with subpath /: open /opt/gitlab/embedded/service/mattermost/client/root.html: permission denied"}
+2022-05-05_11:27:00.87797 {"timestamp":"2022-05-05 11:27:00.877 Z","level":"info","msg":"Starting up plugins","caller":"app/plugin.go:185"}
+2022-05-05_11:27:00.87797 {"timestamp":"2022-05-05 11:27:00.877 Z","level":"info","msg":"Syncing plugins from the file store","caller":"app/plugin.go:259"}
+2022-05-05_11:28:05.27943 {"timestamp":"2022-05-05 11:28:05.279 Z","level":"info","msg":"Worker: Job is complete","caller":"migrations/worker.go:113","worker":"Migrations","job_id":"h8gyefsat7dxtjndu3793b4m4h"}
+2022-05-05_11:28:34.52826 {"timestamp":"2022-05-05 11:28:34.528 Z","level":"info","msg":"Ensuring Surveybot exists","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:28:41.78081 {"timestamp":"2022-05-05 11:28:41.780 Z","level":"info","msg":"Surveybot created","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:28:42.29718 {"timestamp":"2022-05-05 11:28:42.297 Z","level":"info","msg":"Upgrade detected. Checking if a survey should be scheduled.","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:28:42.30216 {"timestamp":"2022-05-05 11:28:42.302 Z","level":"info","msg":"Scheduling next survey for May 26, 2022","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:28:42.31005 {"timestamp":"2022-05-05 11:28:42.309 Z","level":"info","msg":"Sent notification of next survey to admins","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:28:57.15355 {"timestamp":"2022-05-05 11:28:57.152 Z","level":"info","msg":"Post.Message has size restrictions","caller":"sqlstore/post_store.go:2261","max_characters":16383,"max_bytes":65535}

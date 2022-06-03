@@ -1,0 +1,35 @@
+---
+
+version: "3"
+
+services:
+  nexus:
+    image: sonatype/nexus3:3.39.0
+    volumes:
+      - volume_nexus:/nexus-data
+    ports:
+      - "8081:8081"
+      - "389:389"
+      - "636:636"  
+    dns:
+      - 10.125.4.205
+    networks:
+      nexus_net:
+        ipv4_address: 172.25.0.2
+
+volumes:
+  volume_nexus:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/cloud/opt_zabbix/nexus/nexus_data/'
+
+networks:
+#Internal-only network for proper nginx proxying and ssh
+  nexus_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.0.0/24  

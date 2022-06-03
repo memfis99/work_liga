@@ -1,0 +1,19 @@
+# Logfile created on 2022-05-26 11:25:09 +0000 by logger.rb/v1.4.2
+[2022-05-26T11:25:09+00:00] INFO: Started Chef Infra Zero at chefzero://localhost:1 with repository at /opt/gitlab/embedded
+  One version per cookbook
+
+[2022-05-26T11:25:09+00:00] INFO: *** Chef Infra Client 15.17.4 ***
+[2022-05-26T11:25:09+00:00] INFO: Platform: x86_64-linux
+[2022-05-26T11:25:09+00:00] INFO: Chef-client pid: 32
+[2022-05-26T11:25:11+00:00] INFO: Setting the run_list to ["recipe[gitlab]"] from CLI options
+[2022-05-26T11:25:11+00:00] INFO: Run List is [recipe[gitlab]]
+[2022-05-26T11:25:11+00:00] INFO: Run List expands to [gitlab]
+[2022-05-26T11:25:11+00:00] INFO: Starting Chef Infra Client Run for gitlab.les.at-consulting.ru
+[2022-05-26T11:25:11+00:00] INFO: Running start handlers
+[2022-05-26T11:25:11+00:00] INFO: Start handlers complete.
+[2022-05-26T11:25:12+00:00] INFO: Loading cookbooks [gitlab@0.0.1, package@0.1.0, logrotate@0.1.0, postgresql@0.1.0, redis@0.1.0, monitoring@0.1.0, registry@0.1.0, mattermost@0.1.0, consul@0.1.0, gitaly@0.1.0, praefect@0.1.0, gitlab-kas@0.1.0, gitlab-pages@0.1.0, letsencrypt@0.1.0, nginx@0.1.0, runit@5.1.3, acme@4.1.3, crond@0.1.0]
+[2022-05-26T11:25:16+00:00] ERROR: Running exception handlers
+[2022-05-26T11:25:16+00:00] ERROR: Exception handlers complete
+[2022-05-26T11:25:16+00:00] FATAL: Stacktrace dumped to /opt/gitlab/embedded/cookbooks/cache/chef-stacktrace.out
+[2022-05-26T11:25:16+00:00] FATAL: Please provide the contents of the stacktrace.out file if you file a bug report
+[2022-05-26T11:25:16+00:00] FATAL: TypeError: no implicit conversion of nil into String

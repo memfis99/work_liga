@@ -1,0 +1,23 @@
+2022-05-05_11:30:13.45559 {"timestamp":"2022-05-05 11:30:13.455 Z","level":"info","msg":"Server is initializing...","caller":"app/server.go:255","go_version":"go1.16.7"}
+2022-05-05_11:30:13.45573 {"timestamp":"2022-05-05 11:30:13.455 Z","level":"info","msg":"Starting websocket hubs","caller":"app/web_hub.go:93","number_of_hubs":8}
+2022-05-05_11:30:13.45611 {"timestamp":"2022-05-05 11:30:13.455 Z","level":"info","msg":"Pinging SQL","caller":"sqlstore/store.go:215","database":"master"}
+2022-05-05_11:30:13.51133 {"timestamp":"2022-05-05 11:30:13.504 Z","level":"info","msg":"Loaded system translations","caller":"i18n/i18n.go:93","for locale":"en","from locale":"/opt/gitlab/embedded/service/mattermost/i18n/en.json"}
+2022-05-05_11:30:13.55114 {"timestamp":"2022-05-05 11:30:13.539 Z","level":"info","msg":"Current version is 6.5.0 (6.5.0/Tue Mar 15 15:35:40 UTC 2022/7fff157bcf85b54d595e22262a66d7f28d4b5a68/none)","caller":"app/server.go:538","current_version":"6.5.0","build_number":"6.5.0","build_date":"Tue Mar 15 15:35:40 UTC 2022","build_hash":"7fff157bcf85b54d595e22262a66d7f28d4b5a68","build_hash_enterprise":"none"}
+2022-05-05_11:30:13.55116 {"timestamp":"2022-05-05 11:30:13.539 Z","level":"info","msg":"Team Edition Build","caller":"app/server.go:549","enterprise_build":false}
+2022-05-05_11:30:13.55116 {"timestamp":"2022-05-05 11:30:13.539 Z","level":"info","msg":"Printing current working","caller":"app/server.go:553","directory":"/opt/gitlab/embedded/service/mattermost"}
+2022-05-05_11:30:13.55117 {"timestamp":"2022-05-05 11:30:13.539 Z","level":"info","msg":"Loaded config","caller":"app/server.go:554","source":"file:///var/opt/gitlab/mattermost/config.json"}
+2022-05-05_11:30:13.55117 {"timestamp":"2022-05-05 11:30:13.543 Z","level":"info","msg":"Starting workers","caller":"jobs/workers.go:48"}
+2022-05-05_11:30:13.55310 {"timestamp":"2022-05-05 11:30:13.552 Z","level":"info","msg":"Starting schedulers.","caller":"jobs/schedulers.go:47"}
+2022-05-05_11:30:13.59091 {"timestamp":"2022-05-05 11:30:13.590 Z","level":"error","msg":"License key from https://mattermost.com required to unlock enterprise features.","caller":"app/license.go:90","error":"resource: License id: "}
+2022-05-05_11:30:13.59921 {"timestamp":"2022-05-05 11:30:13.599 Z","level":"error","msg":"Failed to update assets subpath from config","caller":"web/static.go:26","error":"failed to update root.html with subpath /: open /opt/gitlab/embedded/service/mattermost/client/root.html: permission denied"}
+2022-05-05_11:30:13.59951 {"timestamp":"2022-05-05 11:30:13.599 Z","level":"info","msg":"Starting up plugins","caller":"app/plugin.go:185"}
+2022-05-05_11:30:13.59963 {"timestamp":"2022-05-05 11:30:13.599 Z","level":"info","msg":"Syncing plugins from the file store","caller":"app/plugin.go:259"}
+2022-05-05_11:30:16.97439 {"timestamp":"2022-05-05 11:30:16.974 Z","level":"info","msg":"Ensuring Surveybot exists","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:30:18.35084 {"timestamp":"2022-05-05 11:30:18.350 Z","level":"info","msg":"connectDatabase","caller":"app/plugin_api.go:928","plugin_id":"focalboard","dbType":"postgres"}
+2022-05-05_11:30:18.56532 {"timestamp":"2022-05-05 11:30:18.565 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifyMentions"}
+2022-05-05_11:30:18.56656 {"timestamp":"2022-05-05 11:30:18.566 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifySubscriptions"}
+2022-05-05_11:30:18.56671 {"timestamp":"2022-05-05 11:30:18.566 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifyLogger"}
+2022-05-05_11:30:20.76363 {"timestamp":"2022-05-05 11:30:20.763 Z","level":"info","msg":"Server.Start","caller":"app/plugin_api.go:928","plugin_id":"focalboard"}
+2022-05-05_11:31:05.05818 {"timestamp":"2022-05-05 11:31:05.054 Z","level":"error","msg":"Mail server connection test is failed","caller":"app/server.go:1165","error":"SendEmailNotifications is not true"}
+2022-05-05_11:31:05.05821 {"timestamp":"2022-05-05 11:31:05.057 Z","level":"info","msg":"Starting Server...","caller":"app/server.go:1187"}
+2022-05-05_11:31:05.05821 {"timestamp":"2022-05-05 11:31:05.057 Z","level":"info","msg":"Server is listening on 127.0.0.1:8065","caller":"app/server.go:1260","address":"127.0.0.1:8065"}

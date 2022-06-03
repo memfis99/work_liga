@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:14.10.0-ce.0'
+    restart: always
+    hostname: 'gitlab.les.at-consulting.ru'
+    container_name: gitlab.les.at-consulting.ru
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.les.at-consulting.ru'
+        # nginx['redirect_http_to_https']=false
+        # registry_nginx['redirect_http_to_https']=false
+    networks:
+      - gitlab_net        
+    ports:
+      - '80:80'
+        # - '443:443'
+      - '2224:22'
+      - '389:389'
+      - '636:636'  
+    dns:
+      - 10.125.4.205  
+    volumes:
+      - '/home/cloud/opt_gitlab/config:/etc/gitlab'
+      - '/home/cloud/opt_gitlab/logs:/var/log/gitlab'
+      - '/home/cloud/opt_gitlab/data:/var/opt/gitlab' 
+
+networks:
+#Internal-only network for proper nginx proxying and ssh
+  gitlab_net:
+    driver: bridge
+#    enable_ipv6: true
+#    internal: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16

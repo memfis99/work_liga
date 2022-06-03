@@ -1,0 +1,18 @@
+2022-05-05_11:24:02.12095 {"timestamp":"2022-05-05 11:24:01.733 Z","level":"info","msg":"Server is initializing...","caller":"app/server.go:255","go_version":"go1.16.7"}
+2022-05-05_11:24:02.12105 {"timestamp":"2022-05-05 11:24:02.035 Z","level":"info","msg":"Starting websocket hubs","caller":"app/web_hub.go:93","number_of_hubs":8}
+2022-05-05_11:24:02.12349 {"timestamp":"2022-05-05 11:24:02.122 Z","level":"info","msg":"Pinging SQL","caller":"sqlstore/store.go:215","database":"master"}
+2022-05-05_11:24:03.10568 {"timestamp":"2022-05-05 11:24:03.104 Z","level":"info","msg":"The database schema version has been set","caller":"sqlstore/upgrade.go:133","version":"6.5.0"}
+2022-05-05_11:24:03.11453 {"timestamp":"2022-05-05 11:24:03.114 Z","level":"info","msg":"Loaded system translations","caller":"i18n/i18n.go:93","for locale":"en","from locale":"/opt/gitlab/embedded/service/mattermost/i18n/en.json"}
+2022-05-05_11:24:04.14576 {"timestamp":"2022-05-05 11:24:04.144 Z","level":"info","msg":"Current version is 6.5.0 (6.5.0/Tue Mar 15 15:35:40 UTC 2022/7fff157bcf85b54d595e22262a66d7f28d4b5a68/none)","caller":"app/server.go:538","current_version":"6.5.0","build_number":"6.5.0","build_date":"Tue Mar 15 15:35:40 UTC 2022","build_hash":"7fff157bcf85b54d595e22262a66d7f28d4b5a68","build_hash_enterprise":"none"}
+2022-05-05_11:24:04.14577 {"timestamp":"2022-05-05 11:24:04.145 Z","level":"info","msg":"Team Edition Build","caller":"app/server.go:549","enterprise_build":false}
+2022-05-05_11:24:04.14578 {"timestamp":"2022-05-05 11:24:04.145 Z","level":"info","msg":"Printing current working","caller":"app/server.go:553","directory":"/opt/gitlab/embedded/service/mattermost"}
+2022-05-05_11:24:04.14578 {"timestamp":"2022-05-05 11:24:04.145 Z","level":"info","msg":"Loaded config","caller":"app/server.go:554","source":"file:///var/opt/gitlab/mattermost/config.json"}
+2022-05-05_11:24:04.69618 {"timestamp":"2022-05-05 11:24:04.551 Z","level":"info","msg":"Starting workers","caller":"jobs/workers.go:48"}
+2022-05-05_11:24:04.69620 {"timestamp":"2022-05-05 11:24:04.553 Z","level":"warn","msg":"Fetching time of first server run failed. Setting to 'now'.","caller":"app/server.go:691"}
+2022-05-05_11:24:05.05968 {"timestamp":"2022-05-05 11:24:05.043 Z","level":"info","msg":"Starting schedulers.","caller":"jobs/schedulers.go:47"}
+2022-05-05_11:24:05.19169 {"timestamp":"2022-05-05 11:24:05.191 Z","level":"info","msg":"Migrating roles to database.","caller":"app/migrations.go:33"}
+2022-05-05_11:24:05.46455 {"timestamp":"2022-05-05 11:24:05.464 Z","level":"error","msg":"License key from https://mattermost.com required to unlock enterprise features.","caller":"app/license.go:90","error":"resource: License id: "}
+2022-05-05_11:24:05.49080 {"timestamp":"2022-05-05 11:24:05.490 Z","level":"info","msg":"Migrating emojis config to database.","caller":"app/migrations.go:110"}
+2022-05-05_11:24:06.15659 {"timestamp":"2022-05-05 11:24:06.156 Z","level":"error","msg":"Failed to update assets subpath from config","caller":"web/static.go:26","error":"failed to update root.html with subpath /: open /opt/gitlab/embedded/service/mattermost/client/root.html: permission denied"}
+2022-05-05_11:24:06.15673 {"timestamp":"2022-05-05 11:24:06.156 Z","level":"info","msg":"Starting up plugins","caller":"app/plugin.go:185"}
+2022-05-05_11:24:06.15678 {"timestamp":"2022-05-05 11:24:06.156 Z","level":"info","msg":"Syncing plugins from the file store","caller":"app/plugin.go:259"}

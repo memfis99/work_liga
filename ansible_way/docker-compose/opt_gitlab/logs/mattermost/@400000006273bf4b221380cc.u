@@ -1,0 +1,38 @@
+2022-05-05_11:31:43.04422 {"timestamp":"2022-05-05 11:31:43.043 Z","level":"info","msg":"Server is initializing...","caller":"app/server.go:255","go_version":"go1.16.7"}
+2022-05-05_11:31:43.04467 {"timestamp":"2022-05-05 11:31:43.044 Z","level":"info","msg":"Starting websocket hubs","caller":"app/web_hub.go:93","number_of_hubs":8}
+2022-05-05_11:31:43.04516 {"timestamp":"2022-05-05 11:31:43.044 Z","level":"info","msg":"Pinging SQL","caller":"sqlstore/store.go:215","database":"master"}
+2022-05-05_11:31:43.04561 {"timestamp":"2022-05-05 11:31:43.045 Z","level":"error","msg":"Failed to ping DB","caller":"sqlstore/store.go:225","error":"dial unix /var/opt/gitlab/postgresql/.s.PGSQL.5432: connect: connection refused","retrying in seconds":10}
+2022-05-05_11:31:53.05204 {"timestamp":"2022-05-05 11:31:53.051 Z","level":"info","msg":"Pinging SQL","caller":"sqlstore/store.go:215","database":"master"}
+2022-05-05_11:31:53.16745 {"timestamp":"2022-05-05 11:31:53.165 Z","level":"info","msg":"Loaded system translations","caller":"i18n/i18n.go:93","for locale":"en","from locale":"/opt/gitlab/embedded/service/mattermost/i18n/en.json"}
+2022-05-05_11:31:53.17756 {"timestamp":"2022-05-05 11:31:53.177 Z","level":"info","msg":"Current version is 6.5.0 (6.5.0/Tue Mar 15 15:35:40 UTC 2022/7fff157bcf85b54d595e22262a66d7f28d4b5a68/none)","caller":"app/server.go:538","current_version":"6.5.0","build_number":"6.5.0","build_date":"Tue Mar 15 15:35:40 UTC 2022","build_hash":"7fff157bcf85b54d595e22262a66d7f28d4b5a68","build_hash_enterprise":"none"}
+2022-05-05_11:31:53.17758 {"timestamp":"2022-05-05 11:31:53.177 Z","level":"info","msg":"Team Edition Build","caller":"app/server.go:549","enterprise_build":false}
+2022-05-05_11:31:53.17758 {"timestamp":"2022-05-05 11:31:53.177 Z","level":"info","msg":"Printing current working","caller":"app/server.go:553","directory":"/opt/gitlab/embedded/service/mattermost"}
+2022-05-05_11:31:53.17759 {"timestamp":"2022-05-05 11:31:53.177 Z","level":"info","msg":"Loaded config","caller":"app/server.go:554","source":"file:///var/opt/gitlab/mattermost/config.json"}
+2022-05-05_11:31:53.18202 {"timestamp":"2022-05-05 11:31:53.180 Z","level":"info","msg":"Starting workers","caller":"jobs/workers.go:48"}
+2022-05-05_11:31:53.18203 {"timestamp":"2022-05-05 11:31:53.181 Z","level":"info","msg":"Starting schedulers.","caller":"jobs/schedulers.go:47"}
+2022-05-05_11:31:53.23001 {"timestamp":"2022-05-05 11:31:53.206 Z","level":"error","msg":"License key from https://mattermost.com required to unlock enterprise features.","caller":"app/license.go:90","error":"resource: License id: "}
+2022-05-05_11:31:53.27076 {"timestamp":"2022-05-05 11:31:53.268 Z","level":"error","msg":"Failed to update assets subpath from config","caller":"web/static.go:26","error":"failed to update root.html with subpath /: open /opt/gitlab/embedded/service/mattermost/client/root.html: permission denied"}
+2022-05-05_11:31:53.27078 {"timestamp":"2022-05-05 11:31:53.269 Z","level":"info","msg":"Starting up plugins","caller":"app/plugin.go:185"}
+2022-05-05_11:31:53.27079 {"timestamp":"2022-05-05 11:31:53.269 Z","level":"info","msg":"Syncing plugins from the file store","caller":"app/plugin.go:259"}
+2022-05-05_11:31:56.60202 {"timestamp":"2022-05-05 11:31:56.601 Z","level":"info","msg":"Ensuring Surveybot exists","caller":"app/plugin_api.go:928","plugin_id":"com.mattermost.nps"}
+2022-05-05_11:32:00.79198 {"timestamp":"2022-05-05 11:32:00.791 Z","level":"warn","msg":"plugin failed to exit gracefully","caller":"plugin/hclog_adapter.go:72","plugin_id":"focalboard"}
+2022-05-05_11:32:51.11558 {"timestamp":"2022-05-05 11:32:51.115 Z","level":"error","msg":"Failed to install prepackaged plugin","caller":"app/plugin.go:899","path":"/opt/gitlab/embedded/service/mattermost/prepackaged_plugins/focalboard-v0.15.0-linux-amd64.tar.gz","error":"Failed to install extracted prepackaged plugin /opt/gitlab/embedded/service/mattermost/prepackaged_plugins/focalboard-v0.15.0-linux-amd64.tar.gz: installExtractedPlugin: Unable to restart plugin on upgrade., unable to start plugin: focalboard: timeout while waiting for plugin to start"}
+2022-05-05_11:32:56.34205 {"timestamp":"2022-05-05 11:32:56.341 Z","level":"info","msg":"connectDatabase","caller":"app/plugin_api.go:928","plugin_id":"focalboard","dbType":"postgres"}
+2022-05-05_11:32:56.36787 {"timestamp":"2022-05-05 11:32:56.367 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifyMentions"}
+2022-05-05_11:32:56.36981 {"timestamp":"2022-05-05 11:32:56.369 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifySubscriptions"}
+2022-05-05_11:32:56.36994 {"timestamp":"2022-05-05 11:32:56.369 Z","level":"info","msg":"Initialized notification backend","caller":"app/plugin_api.go:928","plugin_id":"focalboard","name":"notifyLogger"}
+2022-05-05_11:32:56.37636 {"timestamp":"2022-05-05 11:32:56.376 Z","level":"info","msg":"Server.Start","caller":"app/plugin_api.go:928","plugin_id":"focalboard"}
+2022-05-05_11:32:56.38752 {"timestamp":"2022-05-05 11:32:56.387 Z","level":"error","msg":"Mail server connection test is failed","caller":"app/server.go:1165","error":"SendEmailNotifications is not true"}
+2022-05-05_11:32:56.39057 {"timestamp":"2022-05-05 11:32:56.390 Z","level":"info","msg":"Starting Server...","caller":"app/server.go:1187"}
+2022-05-05_11:32:56.39064 {"timestamp":"2022-05-05 11:32:56.390 Z","level":"info","msg":"Server is listening on 127.0.0.1:8065","caller":"app/server.go:1260","address":"127.0.0.1:8065"}
+2022-05-05_11:42:06.13619 {"timestamp":"2022-05-05 11:42:06.135 Z","level":"info","msg":"SimpleWorker: Job is complete","caller":"jobs/base_workers.go:88","worker":"ExpiryNotify","job_id":"mohanupcrjrmxrzcmi9jrjj1de"}
+2022-05-05_11:52:06.22740 {"timestamp":"2022-05-05 11:52:06.227 Z","level":"info","msg":"SimpleWorker: Job is complete","caller":"jobs/base_workers.go:88","worker":"ExpiryNotify","job_id":"7zbcer99qjdiubx3mq1escbkso"}
+2022-05-05_12:02:06.32414 {"timestamp":"2022-05-05 12:02:06.323 Z","level":"info","msg":"SimpleWorker: Job is complete","caller":"jobs/base_workers.go:88","worker":"ExpiryNotify","job_id":"mb4xzok48388pnojpgakap3u3e"}
+2022-05-05_12:10:03.67334 {"timestamp":"2022-05-05 12:10:03.673 Z","level":"info","msg":"Stopping Server...","caller":"app/server.go:946"}
+2022-05-05_12:10:03.67336 {"timestamp":"2022-05-05 12:10:03.673 Z","level":"info","msg":"stopping websocket hub connections","caller":"app/web_hub.go:113"}
+2022-05-05_12:10:03.68458 {"timestamp":"2022-05-05 12:10:03.683 Z","level":"info","msg":"Stopped workers","caller":"jobs/workers.go:90"}
+2022-05-05_12:10:03.68459 {"timestamp":"2022-05-05 12:10:03.683 Z","level":"info","msg":"Stopping schedulers.","caller":"jobs/schedulers.go:118"}
+2022-05-05_12:10:03.68460 {"timestamp":"2022-05-05 12:10:03.683 Z","level":"info","msg":"Schedulers stopped.","caller":"jobs/schedulers.go:50"}
+2022-05-05_12:10:03.68460 {"timestamp":"2022-05-05 12:10:03.683 Z","level":"info","msg":"Server stopped","caller":"app/server.go:1026"}
+2022-05-05_12:10:03.68461 {"timestamp":"2022-05-05 12:10:03.683 Z","level":"info","msg":"Shutting down plugins","caller":"app/plugin.go:339"}
+2022-05-05_12:10:03.68915 {"timestamp":"2022-05-05 12:10:03.688 Z","level":"info","msg":"Server.Shutdown","caller":"app/plugin_api.go:928","plugin_id":"focalboard"}
