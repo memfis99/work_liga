@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  vpn:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - INSTALL_DEB_PACKAGE=${INSTALL_DEB_PACKAGE}
+    container_name: vipnet
+    # cap_add, security_opt, and volume required for the image to function
+    cap_add:
+      - net_admin
+    env_file:
+      - ./.env
+    tmpfs:
+      - /run
+      - /tmp
+    restart: "no"
+    privileged: true
+    security_opt:
+      - label:disable
+    networks:
+     vip_net:
+       ipv4_address: 172.19.0.2    
+    stdin_open: true
+    tty: true
+    volumes:
+      - /dev/net:/dev/net:z
+      - ./app/abn_00f3.dst:/vipnet/abn_00f3.dst
+
+networks:
+  vip_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16      

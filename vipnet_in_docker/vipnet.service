@@ -1,0 +1,14 @@
+[Unit]
+Description=service with docker compose
+PartOf=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/home/kzuykov/input
+ExecStart=/usr/local/bin/docker-compose -f vipnet_in_docker/docker-compose.yml up -d --remove-orphans
+ExecStop=/usr/local/bin/docker-compose -f vipnet_in_docker/docker-compose.yml down 
+
+[Install]
+WantedBy=multi-user.target

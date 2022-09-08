@@ -1,0 +1,3 @@
+KEYFILE_PASS="pass"
+DNS_SERVER="77.88.8.8"
+INSTALL_DEB_PACKAGE="vipnetclient_eu_amd64_4.8.0-6347.deb"
