@@ -7,5 +7,5 @@ if [ $(systemctl is-active vipnet.service | wc -c) -ne "7" ]; then
   sleep 15
 fi
 
-ip route add 172.17.193.232 via 172.19.0.2
-rdesktop -d GCLOUD-RTK -u k.v.zuykov -p pass 172.17.193.232  -r disk:tmp=/home/kzuykov/Downloads -g 1920x1080
+ip route add <ip dest> via <ip via>
+rdesktop -d GCLOUD-RTK -u <user> -p pass <ip dest>  -r disk:tmp=/home/user/Downloads -g 1920x1080
